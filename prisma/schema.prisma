@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  pessoal
+  estudo
+  trabalho
+}
+
+model Task {
+  id       Int      @id @default(autoincrement())
+  title    String
+  category Category
+  done     Boolean  @default(false)
+}
